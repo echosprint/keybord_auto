@@ -105,7 +105,7 @@ pub fn move_to_sent_button() {
 
 pub fn click_to_sent_button() {
     move_to_sent_button();
-    sleep(6000);
+    sleep(10_000);
     let mut enigo = Enigo::new();
     enigo.mouse_click(MouseButton::Left);
     sleep(6000)
