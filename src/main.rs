@@ -44,7 +44,7 @@ fn main() {
     };
 
     if args.sent >= 0 {
-        select_the_sent_mail( &pos_config.sent_mail, args.sent);
+        select_the_sent_mail(&pos_config.sent_mail, args.sent);
     }
 
     match mail_num {

@@ -86,9 +86,14 @@ fn add_attachment(attach: &Attachment, file_num: i32) {
 }
 
 pub fn select_the_sent_mail(sent_pos: &Pos, sent_num: i32) {
-
     let mut enigo = Enigo::new();
-    let mut y_offset  = if sent_num == 0 { 0 } else {40};
-    y_offset += sent_num * 70  + 4 * 70 ; 
-    enigo.move_and_click(&Pos{x: sent_pos.x, y:sent_pos.y + y_offset}, 500);
+    let mut y_offset = if sent_num == 0 { 0 } else { 40 };
+    y_offset += sent_num * 70 + 4 * 70;
+    enigo.move_and_click(
+        &Pos {
+            x: sent_pos.x,
+            y: sent_pos.y + y_offset,
+        },
+        500,
+    );
 }
