@@ -13,10 +13,10 @@ use crate::config::{config, write_back_config};
 #[derive(Parser, Debug)]
 #[command(version, about, long_about = None)]
 struct Args {
-    /// x position cursor
+    /// to process the specified mail
     #[arg(short, long, default_value_t = 0,value_parser=clap::value_parser!(i32).range(0..=5))]
     mail: i32,
-
+    /// other mails had been sent
     #[arg(short, long, default_value_t = -1)]
     sent: i32,
 }
@@ -28,7 +28,6 @@ fn main() {
 
     let args = Args::parse();
     // println!("{:?}", args);
-    println!("process the mail {}", args.mail);
 
     let mut pos_config = config();
     // println!("{:#?}", pos_config);
@@ -46,6 +45,8 @@ fn main() {
     if args.sent >= 0 {
         select_the_sent_mail(&pos_config.sent_mail, args.sent);
     }
+
+    println!("process the mail {}", mail_num);
 
     match mail_num {
         1 => edit_mail1(
@@ -70,4 +71,6 @@ fn main() {
         5 => edit_mail5(&pos_config.mail[4], &formatted_date, pos_config.wait_edit),
         _ => (),
     }
+
+    move_to_sent_button();
 }

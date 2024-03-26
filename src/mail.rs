@@ -97,3 +97,9 @@ pub fn select_the_sent_mail(sent_pos: &Pos, sent_num: i32) {
         500,
     );
 }
+
+pub fn move_to_sent_button() {
+
+    let mut enigo = Enigo::new();
+    enigo.mouse_move_to(40, 40);
+}
