@@ -99,7 +99,14 @@ pub fn select_the_sent_mail(sent_pos: &Pos, sent_num: i32) {
 }
 
 pub fn move_to_sent_button() {
-
     let mut enigo = Enigo::new();
     enigo.mouse_move_to(40, 40);
+}
+
+pub fn click_to_sent_button() {
+    move_to_sent_button();
+    sleep(6000);
+    let mut enigo = Enigo::new();
+    enigo.mouse_click(MouseButton::Left);
+    sleep(6000)
 }
