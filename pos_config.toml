@@ -1,5 +1,7 @@
 mail_num = 1
 wait_edit = 1000
+wait_before_send = 10000
+wait_after_send = 12000
 
 [sent_mail]
 x = 400

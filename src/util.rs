@@ -6,6 +6,7 @@ use std::time::Duration;
 pub trait ClickModify {
     fn move_and_click(&mut self, pos: &Pos, duration: u64);
     fn move_and_change_date(&mut self, pos: &Pos, date_str: &str, duration: u64);
+    fn move_and_change_str(&mut self, pos: &Pos, del_num: i32, change_str: &str, duration: u64);
 }
 
 impl ClickModify for Enigo {
@@ -16,9 +17,14 @@ impl ClickModify for Enigo {
     }
 
     fn move_and_change_date(&mut self, pos: &Pos, date_str: &str, duration: u64) {
+        let del_num: i32 = date_str.len().try_into().unwrap();
+        self.move_and_change_str(pos, del_num, date_str, duration)
+    }
+
+    fn move_and_change_str(&mut self, pos: &Pos, del_num: i32, change_str: &str, duration: u64) {
         self.move_and_click(pos, 10);
-        (0..8).for_each(|_| self.key_click(Key::Backspace));
-        self.key_sequence(&date_str);
+        (0..del_num).for_each(|_| self.key_click(Key::Backspace));
+        self.key_sequence(&change_str);
         sleep(duration);
     }
 }

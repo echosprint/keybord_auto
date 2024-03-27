@@ -71,6 +71,10 @@ fn add_attachment(attach: &Attachment, file_num: i32) {
     let mut enigo = Enigo::new();
     // click on the add attachment button
     enigo.move_and_click(&attach.button, 500);
+    // change the directory
+    enigo.move_and_change_str(&Pos { x: 820, y: 50 }, 25, r"D:\工作\临时事务统计", 300);
+    enigo.key_click(Key::Return);
+    sleep(300);
     // select the file
     enigo.move_and_click(
         &Pos {
@@ -103,10 +107,11 @@ pub fn move_to_sent_button() {
     enigo.mouse_move_to(40, 40);
 }
 
-pub fn click_to_sent_button() {
+pub fn click_to_sent_button(wait_before_send: u64, wait_after_send: u64) {
+    sleep(wait_before_send);
     move_to_sent_button();
-    sleep(10_000);
+    sleep(500);
     let mut enigo = Enigo::new();
     enigo.mouse_click(MouseButton::Left);
-    sleep(6000)
+    sleep(wait_after_send);
 }

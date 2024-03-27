@@ -9,6 +9,8 @@ const TOML_FILE: &str = "pos_config.toml";
 pub struct Config {
     pub mail_num: i32,
     pub wait_edit: u64,
+    pub wait_before_send: u64,
+    pub wait_after_send: u64,
     pub sent_mail: Pos,
     pub add_attach: Attachment,
     pub mail: Vec<MailPos>,

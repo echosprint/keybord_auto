@@ -89,7 +89,7 @@ fn main() {
             break;
         } else {
             mail_num += 1;
-            click_to_sent_button();
+            click_to_sent_button(pos_config.wait_before_send, pos_config.wait_after_send);
         }
     }
 }
